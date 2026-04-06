@@ -1,0 +1,77 @@
+S1 i S2:
+- u svim css fajlovima, osim u meni.css sam izmijenila fiksnu visinu iframe-a, odnosno napisala
+ sam  height: auto, kako bi i ikone koje  sam dodala ispod stavki u meniju bile vidljive
+- sada se unutar taga <a> nalazi i tag <span>, pored taga <img>, kako bih mogla samo tekst učiniti 
+nevidljivim kada se pređe preko ikone
+- dodan atribut target="_top" kako bi se klikom na svaki link otvarala stranica preko cijelog prozora, a ne jedna ispod druge
+
+- unutar selektora za tip-nekretnine dodala sam linije koda     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center; pomocu kojih sam postigla da se Naziv nekrenine i lista tih nekretnina nalaze jedni ispod drugih
+ centrirani; u nedostatku prostora, preslo bi se u novi red;
+- traženi raspored unutar kontejnera za listu nekretnina je postignut upotrebom:
+    display: flex;
+    flex-wrap: wrap; -> nekretnine se nalaze u jednom redu, a ovo svojstvo omogućava prelazak u novi red, ako je prethodni popunjen;
+    justify-content: flex-start; -> redovi se popunjavaju od početka, odnosno svaki element je paralelan sa nekim elementom u redu iznad ili ispod (ako postoji)
+    width: 300px; -> sirina svakog elementa koji prestavlja nekretninu je fiksna 
+- mislim da u potpunosti nisam mogla pri upotrebi flex proprety-ja zamijeniti grid-template-columns: repeat(auto-fit, 300px) pri upotrebi grid-a
+- imala sam 2 opcije, pri čemu pi korištenjem justify-content: center; unutar selektora za class .grid-lista-nekretnina postigla
+ uvijek centriran sadrzaj (nekretnine), ali zato elementi koji prelaze u sljedeci red ne bi bili paralelni sa elemntima iz gornjeg reda, 
+već bi bili samo centrirani unutar reda u kojem se nalaze
+- mislim da sam upotrebom justify-content: flex-start uspijela dobiti stranicu koja više liči na onu koja je bila napravljena korištenjem grid-a; 
+razlike se primijete samo pri specifičnim veličinama pregledina, gdje su elementi nekretnine na lijevoj strani uz uvicu (padding sam isiti ostavila), 
+a na desnoj strani se javlja malo više praznog prostora, jer tu ne može statiu još jedan element; nakon dosta istraživanja, saznala sam da je to teško popraviti, pogotovo bez korištenja nekih naprednijih tehnika;
+
+- dodan novi div element klase linkovi koji sadrzi dugmad za navigaciju; pomocu flex-a sam ih pozicionirala unutar elementa opis
+- mozda je jedan medijski (srednji) upit suvisan, ali sam ga dodala kako bi smanjila broj provjera koda
+- elementi se pojavljuju i gube pomocu svojstva opacity
+
+
+- pomocu classList postignuto dinamicko mijenjanje klase upita (klasa glavni) koji se treba pojaviti na stranici koja ima sitinu ispod 600
+- ta dodjela i uklanjanje klase se obavljaju u funkcijama koje su vracene iz funkcije postaviCarousel
+- izmjenjena funkcija za filtriranje nekretnina kako bi se ispravno filtrirale nekretnine prema periodu (novi slucaj za kriterij periodObjave)
+
+S3:
+- implementirano ogranicenje na broj neuspijesnih prijava po korisniku (ako se korisnik username3 pokusa prijaviti 4. put sa neispravnom sifrom, pojavit ce se blokada trazena)
+- funkcija logLoginAttemp u index.js vrsi upis pokusaja prijave u prijave.txt
+- pomocu varijable loginAttempts se vrsi provjera broja pokusaja prijava po korisniku unutar app.post za rutu /login
+- kako funkcija logLoginAttemp u slucaju spomenutog prekrsaja dozvoljenog broja prijava salje novi statusni kod (429) i odgovarajucu poruku, u fajlu PoziviAjax.js na mjestu gdje
+se tretira slucaj kada stausni kod nije 200, kao parametar err fnCallback funkcije sam poslala { status: ajax.status, responseText: ajax.responseText }, tj. i status i tijelo odovora,
+kao sto je i navedeno u postavci; posljedica toga je da se unutar prijava.js fajla;
+- u slucaju greske se svaki put prikazuje da se korisnik pokusa javiti za 1 minutu, iako je moguce da je preostalo manje od minute cekanja, jer u postavci nije naglaseno da se treba vrijazati preostalo vrijeme
+- nisu jos uvijek izbrisani fajlovi iz postavke sa repozitorija https://bitbucket.org/irfan-prazina/wt24start/src/spirala3 (fajlovi kao sto su detalji1.html, nekretnine1.html i sl)
+
+- implementacija nove rute za top 5 nekretnina na zadanoj lokaciji će vratiti 5 posljednjih nekretnina na zadanoj lokaciji iz datoteke
+nekretnine.json u rastućem poretku, jer nacin sortiranja filtriranih nekretnina nije naveden u postavci
+- ako se ne navede lokacija, funkcija će jednostavno sortirati nekretnine iz datoteke na isti način, bez obzira na lokaciju, jer parametar nije proslijeđen
+- unutar funkcije se prvo filtriraju nekretnine po lokciji (ako lokacija nije null), pa se onda sortiraju
+- u slučaju greške, ova funkcija ima isti odgovor kao metoda za rutu /nekretnine i metodu GET u početnoj postavci
+
+- prije dodavanja upita o nekretnini, dodala sam dio koda gdje se filtiriraju svi upiti za nekretninu za koju sada korisnik postavlja upit;
+ukoliko je vraceno vise od 3 upita, salje se odgovor iz postavke projekta; ostale dijelove koda nisam mijenjala; u svrhu provjere ove rute, pri usjesnoj prijavi, req.session.user se postavlja
+na korisnika koji se trenutno prijavio;
+
+- u svrhu omogucavanja rute /upiti/moji, u programu sam prosla kroz niz nekretnina i u svakoj iteraciji filtrirala upite za svaku nekretninu koji odgovaraju trenutno prijavljenom korisniku,
+a za rutu /nekretnine/:id sam koristila funkciju find da pronađem nekretninu sa id-jem iz rure, pa filter nad upitima te nekretnine da izdvojim zadnja tri; ne generise se neka jedinstvena poruka u slucaju
+prosljeđivanja id-ja koji ne odgovara niti jednoj nekretnini iz fajla nekretnine.json, jer to nije specificirano u postavci.
+
+- rutu /next/upiti/nekretnina:id?page=PAGE sam implementirala na nacin da sam filtrirala upite sa ideksom između broj_upita-page*3-3 i broj_upita-page*3; tako se iskljucuju upiti koji su vec ubuhvaceni
+prethodnim, tj. sljedecim brojem stranice (tj. dohvacam tako po 3 ili manje upita);
+
+- u detalji.js dodan event listener koji poziva getTop5Nekretnina, cuva filtrirane nekretnina koje je vratila ruta za top 5 nekretnina i vrsi redirect na nekretnine.html gdje ce se odgovarajuce nekretnine ucitati
+- na osnovu vrijednosti redirectSource u fajlu nekretnine.js (detalji ili null) odredjeno kojim ce se nekreninama popuniti sadrzaj stranice pomocu funkcije spojiNekretnine
+- dodan novi div u nekretninama koji je omotac za sve nekretnine sa id-jem sveNekretnine koji se prosljedjue funkcijama za update broja klikova i pretrage
+- neki id-jevi/klase su prilagodjeni mom starom kdu za nekretine kako bi se uklopili u vec napisani stil
+
+-pošto nije naglašeno koje informacije o nekretnini za koju su upiti prikazani se trebaju nalaziti na stranici mojiUpiti.htmpl,
+id upita je klikabilan i direktno vodi na detalje o stranici
+
+- nekada se za umjesto jednog, pojave 2 upita (svakako oduzeti bodovi na prve dvije spirale zbog toga)
+- inace se upiti ispravno filtiriraju i ogranicenje na pozvivi getNextUpiti je uvazeno
+- iz carousel.js se pomocu kontrolne varijable slala informacija detalji.js o tome treba li jos upita ucitavati
+
+- format datuma datum_objave u nekretnine.json je zapisan u drugacijem formatu zbog lakseg stavljanja tog polja u bazu
+- u ovom commitu je izmijenjen dio koda tako da vrsi samo update postojecih tabela

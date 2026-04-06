@@ -1,0 +1,28 @@
+[
+  {
+    "tekst_upita": "Početna ponuda za stan...",
+    "cijenaPonude": 220000.00,
+    "datumPonude": "2025-04-15",
+    "odbijenaPonuda": false,
+    "korisnikId": 1,
+    "nekretninaId": 1
+  },
+  {
+    "tekst_upita": "Protuponuda...",
+    "cijenaPonude": 225000.00,
+    "datumPonude": "2025-04-18",
+    "odbijenaPonuda": false,
+    "korisnikId": 2,
+    "nekretninaId": 1,
+    "vezanaPonudaId": 1
+  },
+  {
+    "id": 3,
+    "tekst_upita": "Najnovija ponuda...",
+    "cijenaPonude": 230000.00,
+    "datumPonude": "2025-04-20",
+    "odbijenaPonuda": false,
+    "korisnikId": 1,
+    "nekretninaId": 1
+  }
+]

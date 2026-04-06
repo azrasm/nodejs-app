@@ -1,0 +1,152 @@
+body {
+    background-color: #fdf1d3;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+iframe {
+    border: none; 
+    width: 100%;
+    height: auto;
+}
+
+.tip-nekretnine {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    
+    max-width: 100%; 
+    margin: 0 auto;
+
+}
+
+.grid-lista-nekretnina {
+    display: flex;
+    flex-wrap: wrap;
+    /*grid-template-columns: repeat(auto-fit, 300px);*/
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+    /* Centriranje po horizontali */
+    align-content: center;
+    /* Centriranje po vertikali */
+    align-items: flex-start;
+    max-width: auto;
+}
+
+.nekretnina {
+    border: 2px solid #000000;
+    padding: 30px;
+    width: 300px;
+    box-sizing: border-box;
+    background-color: white;
+    text-align: center;
+    max-width: 300px;
+    height: auto;
+    justify-content: center; 
+}
+
+.nekretnina.kuca {
+    background-color: powderblue;
+}
+
+.nekretnina.pp {
+    background-color: olive;
+}
+
+.slika-nekretnine {
+    max-width: 100%;
+    height: 50%;
+    border: 2px solid #000;
+}
+
+.detalji-nekretnine, .tip-nekretnine {
+    overflow: hidden;
+    text-align: left;
+}
+
+.detalji-nekretnine h3 {
+    margin: 0;
+    white-space: normal; /* Dozvoljava prelamanje teksta */
+    word-wrap: break-word;
+}
+
+.detalji-nekretnine p {
+    margin: 5px 0;
+}
+
+[id^="pretrage-"],
+[id^="klikovi-"] {
+
+    padding: 2px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+
+.cijena-nekretnine {
+    text-align: right;
+}
+
+.detalji-dugme {
+    margin: 20px auto;
+    background-color: #ff9900;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#dugmePretraga {
+    grid-column: span 2; /* Dugme će zauzeti oba fr */
+    margin: 5px auto;
+    background-color: #ff9900;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#dugmePretraga:hover,
+.detalji-dugme:hover {
+    background-color: #836f3d7b;
+    color: black;
+}
+
+#search-container {
+  /* margin-top: 30 px;
+  //  margin-bottom: 30px;*/
+    border: 2px solid #000;
+    margin:auto;
+    width: 50%;
+    padding: 10px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 15px;
+
+    place-items: center;
+}
+#search-container label {
+    padding-right: 5px;
+    text-align: left;
+}
+
+#search-container input {
+    padding: 5px;
+    box-sizing: border-box; /
+}

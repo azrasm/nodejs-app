@@ -1,0 +1,16 @@
+[
+  {
+    "tekst_upita": "Zelio bih pogledati ovaj stan.",
+    "trazeniDatum": "2025-01-29",
+    "odobren": false,
+    "korisnikId": 2,
+    "nekretninaId": 1
+  },
+  {
+    "tekst_upita": "Zainteresovana sam.",
+    "trazeniDatum": "2025-02-12",
+    "odobren": true,
+    "korisnikId": 4,
+    "nekretninaId": 2
+  }
+]

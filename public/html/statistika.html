@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="bs-BA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistika</title>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="../Scripts/statistika.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="../Style/statistika.css">
+</head>
+
+<body>
+    <iframe src="meni.html"></iframe>
+
+    <div class="grid-container">
+    <h1>Statistika nekretnina</h1>
+
+    <div class="unos1"  id="unosPerioda">
+      <label for="periodOd1">Unesite željeni period:</label>
+      <input type="text" id="periodOd1" placeholder="Donja granica perioda">
+      <label for="periodDo1"></label>
+      <input type="text" id="periodDo1" placeholder="Gornja granica perioda">
+    </div>
+  
+    <div class="unos1" id="unosCijene">
+      <label>Unesite željeni raspon cijene:</label>
+
+      <label for="cijenaOd1"></label>
+      <input type="text" id="cijenaOd1" placeholder="Donja granica cijene">
+      <label for="cijenaDo1"></label>
+      <input type="text" id="cijenaDo1" placeholder="Gornja granica cijene">
+      <br>
+    </div>
+
+
+    <div class="unos2"  class="unosPerioda">
+        <label >Unesite željeni period:</label>
+  
+        <label for="periodOd2"></label>
+        <input type="text" id="periodOd2" placeholder="Donja granica perioda">
+        <label for="periodDo2"></label>
+        <input type="text" id="periodDo2" placeholder="Gornja granica perioda">
+      </div>
+    
+      <div class="unos2" class="unosCijene">
+        <label>Unesite željeni raspon cijene:</label>
+  
+        <label for="cijenaOd2"></label>
+        <input type="text" id="cijenaOd2" placeholder="Donja granica cijene">
+        <label for="cijenaDo2"></label>
+        <input type="text" id="cijenaDo2" placeholder="Gornja granica cijene">
+        <br>
+        <button id="drawButton">Iscrtaj histogram</button>
+      </div>
+
+    
+    
+    <div class="histogram">
+
+    <div>
+      <canvas id="chartCanvas"></canvas>
+    </div>
+    </div>
+</div>
+
+</div>
+</div>
+<script defer src="../Scripts/statistika.js"></script>
+<script defer src="../Scripts/SpisakNekretnina.js"></script>
+<script defer src="../Scripts/StatistikaNekretnina.js"></script>
+<script src="../Scripts/nekretnine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>
